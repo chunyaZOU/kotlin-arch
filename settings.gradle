@@ -1,0 +1,2 @@
+include ':app',':archlib'
+project(':archlib').projectDir = new File('extra/archlib')
