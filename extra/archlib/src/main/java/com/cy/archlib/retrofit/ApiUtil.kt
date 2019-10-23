@@ -1,17 +1,17 @@
-package com.cy.kotlinarch.api
+package com.cy.archlib.retrofit
 
-import com.cy.archlib.retrofit.RetrofitCreator
 import retrofit2.Retrofit
 
 
 object ApiUtil {
 
 
+
     private var mRetrofit: Retrofit? = null
 
-    fun apiService(): ApiService {
+    fun <T> apiService(clazz: Class<T>): T {
         if (mRetrofit == null) throw NullPointerException("Retrofit is null")
-        return mRetrofit!!.create(ApiService::class.java)
+        return mRetrofit!!.create(clazz)
     }
 
     fun initApiService() {

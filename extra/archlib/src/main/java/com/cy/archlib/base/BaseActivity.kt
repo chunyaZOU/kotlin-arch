@@ -9,11 +9,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 
-abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     // use it in initPresenter （start in onCreate & stop in onDestroy）
     val mLifecycleScopeProvider: AndroidLifecycleScopeProvider by lazy { AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY) }
-    lateinit var mPresenter: P
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         beforeContentView()
@@ -35,16 +34,15 @@ abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter.detachView()
     }
 
-    fun FragmentActivity.addFragment(fragment: BaseFragment<*>, fragmentId: Int) {
+    fun FragmentActivity.addFragment(fragment: BaseFragment, fragmentId: Int) {
         supportFragmentManager.inTransaction {
             add(fragmentId, fragment)
         }
     }
 
-    fun FragmentActivity.replaceFragment(fragment: BaseFragment<*>, fragmentId: Int) {
+    fun FragmentActivity.replaceFragment(fragment: BaseFragment, fragmentId: Int) {
         supportFragmentManager.inTransaction {
             replace(fragmentId, fragment)
         }

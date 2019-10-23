@@ -1,5 +1,7 @@
 package com.cy.archlib.retrofit
 
+import com.cy.archlib.retrofit.interceptors.HandleResponseInterceptor
+import com.cy.archlib.retrofit.interceptors.LogInfoInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -25,8 +27,8 @@ class RetrofitCreator {
 
         private fun initOKHttp(): OkHttpClient {
 
-            val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            val loggingInterceptor = LogInfoInterceptor()
+            loggingInterceptor.level = LogInfoInterceptor.Level.BODY
 
             return OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)

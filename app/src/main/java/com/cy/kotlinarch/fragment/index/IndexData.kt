@@ -1,6 +1,8 @@
 package com.cy.kotlinarch.fragment.index
 
-class IndexData {
+import androidx.lifecycle.ViewModel
+
+class IndexData:ViewModel() {
 
 
     var login: String? = null

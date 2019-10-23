@@ -1,13 +1,16 @@
 package com.cy.kotlinarch.fragment.index
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.cy.kotlinarch.R
 import com.cy.archlib.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_index.*
+import com.cy.kotlinarch.utils.VMProvider
+import kotlinx.android.synthetic.main.fragment_index.img
+import kotlinx.android.synthetic.main.fragment_index.tv
 
 
-class IndexFragment : BaseFragment<IndexPresenter>(), IndexView {
+class IndexFragment : BaseFragment() {
 
     private lateinit var arg0: String
     private lateinit var arg1: String
@@ -37,25 +40,21 @@ class IndexFragment : BaseFragment<IndexPresenter>(), IndexView {
         tv.text = "Hello Kotlin"
     }
 
-    override fun initPresenter() {
-        super.initPresenter()
-        mPresenter = IndexPresenter()
-        mPresenter.attachView(this)
-    }
-
     override fun initData() {
 
-        tv.text = "Get Data"
-        tv.setOnClickListener {
-            mPresenter.getData(mScopeProvider)
-        }
-        val imgUrl = mPresenter.getImgUrl()
-        imgUrl?.let {
+        val indexModel = VMProvider.of(IndexModel::class.java)
+        indexModel.data.observe(this, Observer {
+            tv.text = it.avatar_url
+
             Glide.with(this)
-                .load(it)
+                .load("http://attach.bbs.miui.com/forum/201312/03/165620x7cknad7vruvec1z.jpg")
+                .circleCrop()
                 .into(img)
+        })
+
+
+        tv.setOnClickListener {
+            indexModel.indexData()
         }
     }
-
-
 }

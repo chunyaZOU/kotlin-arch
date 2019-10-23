@@ -8,9 +8,8 @@ import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 
-abstract class BaseFragment<BP : BasePresenter<*, *>> : Fragment() {
+abstract class BaseFragment : Fragment() {
 
-    lateinit var mPresenter: BP
     // start in called lifecycle method & stop in corresponding lifecycle method
     // private val mScopeProvider by lazy { AndroidLifecycleScopeProvider.from(this) }
     // use it in initPresenter （start in onViewCreated & stop in onDestroyView）
@@ -41,6 +40,5 @@ abstract class BaseFragment<BP : BasePresenter<*, *>> : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mPresenter.detachView()
     }
 }
