@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 class VMProvider {
     companion object {
         fun <T : ViewModel> of(clazz: Class<T>): T {
-            return ViewModelProvider.NewInstanceFactory().create(clazz);
+            return ViewModelProvider.NewInstanceFactory().create(clazz)
         }
     }
 }

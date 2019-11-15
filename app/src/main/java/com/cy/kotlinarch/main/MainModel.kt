@@ -1,21 +1,24 @@
 package com.cy.kotlinarch.main
 
-import com.cy.archlib.base.BaseModel
+import androidx.lifecycle.MutableLiveData
+import com.cy.archlib.base.BaseVM
 
-class MainModel : BaseModel<MainInfo>(){
+class MainModel : BaseVM<MainRepository>() {
 
-
-
-
+    private val mainInfo = MainInfo()
+    val data = MutableLiveData<MainInfo>()
     fun updateData() {
-        var mainInfo=MainInfo()
-        mainInfo.name="MainPage"
-        mainInfo.desc="This is MainPage"
+        mainInfo.name = "MainPage"
+        mainInfo.desc = "This is MainPage"
         data.postValue(mainInfo)
     }
 
     override fun onCleared() {
         super.onCleared()
+    }
+
+    override fun destroy() {
+        super.destroy()
     }
 
 }

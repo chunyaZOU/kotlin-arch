@@ -9,7 +9,7 @@ import com.cy.kotlinarch.fragment.index.IndexFragment
 import com.cy.kotlinarch.utils.VMProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainTextActivity : BaseActivity() {
 
 
     companion object {

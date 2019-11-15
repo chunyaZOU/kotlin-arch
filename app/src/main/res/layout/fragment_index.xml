@@ -2,24 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:gravity="center"
               android:layout_height="match_parent">
 
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tv0"
         android:layout_margin="20dp"
         android:layout_width="match_parent"
+        android:text="Request0"
         android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/img"
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_margin="20dp"
+        android:text="Request1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <com.cy.kotlinarch.view.MyView
-        android:id="@+id/my_view"
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_margin="20dp"
+        android:text="Request2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

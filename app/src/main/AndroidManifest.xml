@@ -13,13 +13,15 @@
         android:name="com.cy.kotlinarch.App"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.cy.kotlinarch.main.MainActivity">
+        <activity
+            android:name="com.cy.kotlinarch.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".main.MainTextActivity"></activity>
     </application>
 
 </manifest>

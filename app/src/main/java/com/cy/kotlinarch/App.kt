@@ -4,14 +4,14 @@ import android.app.Application
 import android.content.Context
 import com.cy.archlib.retrofit.ApiUtil
 
-class App :Application() {
+class App : Application() {
 
-    companion object{
-        lateinit var sCtx:Context
+    companion object {
+        lateinit var sCtx: Context
     }
 
     init {
-        sCtx=this
+        sCtx = this
     }
 
     override fun onCreate() {

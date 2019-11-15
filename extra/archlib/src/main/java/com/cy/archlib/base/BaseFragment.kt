@@ -4,41 +4,37 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), CoroutineScope by MainScope() {
 
-    // start in called lifecycle method & stop in corresponding lifecycle method
-    // private val mScopeProvider by lazy { AndroidLifecycleScopeProvider.from(this) }
-    // use it in initPresenter （start in onViewCreated & stop in onDestroyView）
-    val mScopeProvider: AndroidLifecycleScopeProvider by lazy { AndroidLifecycleScopeProvider.from(viewLifecycleOwner) }
-
-    companion object {
-        private const val TAG = "BaseFragment"
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayout(), null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initView()
-        initPresenter()
         initData()
+        super.onViewCreated(view, savedInstanceState)
     }
 
     abstract fun getLayout(): Int
     abstract fun initView()
     abstract fun initData()
-    @CallSuper
-    open fun initPresenter() {
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

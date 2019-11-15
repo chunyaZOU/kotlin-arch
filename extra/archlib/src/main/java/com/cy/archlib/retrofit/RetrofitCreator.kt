@@ -1,11 +1,8 @@
 package com.cy.archlib.retrofit
 
-import com.cy.archlib.retrofit.interceptors.HandleResponseInterceptor
 import com.cy.archlib.retrofit.interceptors.LogInfoInterceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
@@ -21,7 +18,7 @@ class RetrofitCreator {
                 .baseUrl("https://api.github.com/")
                 .client(initOKHttp())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
         }
 
