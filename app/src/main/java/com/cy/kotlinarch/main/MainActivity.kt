@@ -1,6 +1,5 @@
 package com.cy.kotlinarch.main
 
-import android.view.WindowManager
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.cy.archlib.base.BaseActivity

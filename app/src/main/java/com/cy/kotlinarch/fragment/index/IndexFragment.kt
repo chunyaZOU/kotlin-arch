@@ -13,6 +13,7 @@ import com.cy.kotlinarch.utils.toastShort
 import kotlinx.android.synthetic.main.fragment_index.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class IndexFragment : BaseFragment() {
@@ -59,11 +60,12 @@ class IndexFragment : BaseFragment() {
             launch {
                 indexVM.repos()
                 delay(500)
-                startActivity(Intent(activity, MainTextActivity::class.java))
-                activity?.finish()
+                //startActivity(Intent(activity, MainTextActivity::class.java))
+                //activity?.finish()
             }
 
         }
+
 
         indexVM.dataIndexBean.observe(this, Observer {
             Log.i("IndexFragment0", Thread.currentThread().name)

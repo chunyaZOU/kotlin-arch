@@ -2,7 +2,6 @@ package com.cy.kotlinarch.api
 
 import com.cy.kotlinarch.fragment.index.IndexBean
 import com.cy.kotlinarch.fragment.index.Repos
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 

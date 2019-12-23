@@ -7,6 +7,7 @@ import com.cy.archlib.base.BaseVM
 import com.cy.archlib.common.DEFAULT
 import com.cy.archlib.common.UI
 import com.cy.archlib.common.logi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -21,6 +22,9 @@ class IndexVM : BaseVM<IndexRepository>() {
     fun index0() {
 
         viewModelScope.launch(DEFAULT) {
+
+            val datas=async { repository.indexData0() }
+
             val data = repository.indexData0()
             withContext(UI) {
                 when (data) {
